@@ -22,7 +22,7 @@
       <td>{{$post->title}}</td>
       <td>{{$post->description}}</td>
       <td>{{ isset($post->user) ? $post->user->name : 'Not Found'}}</td>
-      <td><a href="" class="btn btn-dark">view</a></td>
+      <td><a href="/posts/{{$post->id}}" class="btn btn-dark">view</a></td>
       <td>
         <form id="{{$post->id}}" method="post" action="/posts/{{$post->id}}">
         {!! csrf_field() !!}

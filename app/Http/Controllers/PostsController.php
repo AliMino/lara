@@ -30,7 +30,6 @@ class PostsController extends Controller
 
     public function update(Post $post)
     {
-        // dd($post);
         $post->update(request()->all());
         return redirect()->route('posts.index');
     }
@@ -45,6 +44,13 @@ class PostsController extends Controller
     {
         return view('posts.edit', [
             'post' => $post,
+        ]);
+    }
+
+    public function show(Post $post)
+    {
+        return view('posts.show', [
+            'post' => $post
         ]);
     }
 }
