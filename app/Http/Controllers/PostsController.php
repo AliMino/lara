@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Post;
+use App\User;
 
 class PostsController extends Controller
 {
@@ -10,6 +12,39 @@ class PostsController extends Controller
     {
         return view('posts.index', [
             'posts' => Post::all()
+        ]);
+    }
+
+    public function create()
+    {
+        return view('posts.create',[
+            'users' => User::all(),
+        ]);
+    }
+
+    public function store()
+    {
+        Post::create(request()->all());
+        return redirect()->route('posts.index');
+    }
+
+    public function update(Post $post)
+    {
+        // dd($post);
+        $post->update(request()->all());
+        return redirect()->route('posts.index');
+    }
+
+    public function destroy($post)
+    {
+        Post::destroy($post);
+        return redirect()->route('posts.index');
+    }
+
+    public function edit(Post $post)
+    {
+        return view('posts.edit', [
+            'post' => $post,
         ]);
     }
 }

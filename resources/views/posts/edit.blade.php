@@ -3,7 +3,7 @@
  @section('content')
  <a href="{{route('posts.index')}}" class="btn btn-danger">Back</a>
 
-    <form action="{{route('posts.store')}}" method="POST">
+    <form action="{{route('posts.update', $post)}}" method="PUT">
         @csrf
         <div class="form-group">
             <label for="exampleInputEmail1">Title</label>
