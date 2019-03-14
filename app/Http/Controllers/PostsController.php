@@ -14,7 +14,7 @@ class PostsController extends Controller
     {
         return view('posts.index', [
             // 'posts' => Post::all()
-            'posts' => Post::paginate(10)
+            'posts' => Post::paginate(5)
         ]);
     }
 
@@ -46,8 +46,10 @@ class PostsController extends Controller
 
     public function edit(Post $post)
     {
+        // dd($post->user->name);
         return view('posts.edit', [
             'post' => $post,
+            'users' => User::all()
         ]);
     }
 

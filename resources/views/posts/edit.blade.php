@@ -26,6 +26,15 @@
             <label for="exampleInputPassword1">Description</label>
             <textarea name="description" class="form-control">{{$post->description}}</textarea>
         </div>
+        <select class="form-control" name="user_id">
+            @foreach($users as $user)
+            @if($post->user_id == $user->id)
+                <option value="{{$user->id}}" selected>{{$user->name}}</option>
+            @else
+                <option value="{{$user->id}}">{{$user->name}}</option>
+            @endif
+            @endforeach
+        </select>
 
     <button type="submit" class="btn btn-primary">Submit</button>
     </form>

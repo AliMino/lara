@@ -2,12 +2,13 @@
 
 @section('content')
 
-
+@if (Auth::check())
   <table class="table">
   <thead>
     <tr>
       <th scope="col">Id</th>
       <th scope="col">Title</th>
+      <th scope="col">Slug</th>
       <th scope="col">Description</th>
       <th scope="col">Creator Name</th>
       <th scope="col">View</th>
@@ -21,6 +22,7 @@
     <tr>
       <th scope="row">{{$post->id}}</th>
       <td>{{$post->title}}</td>
+      <td>{{$post->slug}}</td>
       <td>{{$post->description}}</td>
       <td>{{ isset($post->user) ? $post->user->name : 'Not Found'}}</td>
       <td><a href="/posts/{{$post->id}}" class="btn btn-dark">view</a></td>
@@ -44,4 +46,9 @@
 <div class="d-flex justify-content-center">
   <a href="{{route('posts.create')}}" class="btn btn-success">New Post</a>
 </div>
+@else
+<div class="text-center alert alert-danger">
+    <h1>Sorry, You must login to view this page <a href="/login">Login</a></h1>
+</div>
+    @endif
 @endsection
