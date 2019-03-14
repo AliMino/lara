@@ -9,7 +9,7 @@
  <h1>Description: {{ $post->description }}</h1>
  <h1>Created at: {{ $post->created_at }}</h1>
  <h1>Updated at: {{ $post->updated_at }}</h1>
- <h1>Updated at: {{ $post->user->name }}</h1>
+ <h1>Username: {{ $post->user != null ? $post->user->name : "Not found" }}</h1>
 
  
     

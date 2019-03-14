@@ -3,8 +3,11 @@
  @section('content')
  <a href="{{route('posts.index')}}" class="btn btn-danger">Back</a>
 
-    <form action="{{route('posts.update', $post)}}" method="PUT">
-        @csrf
+    <form action="{{route('posts.update', $post)}}" method="post">
+        <!-- @csrf -->
+        {{ csrf_field()}}
+        <input name="_method" type="hidden" value="PUT">
+        <input name="_token" type="hidden" value="{{csrf_token()}}">
         <div class="form-group">
             <label for="exampleInputEmail1">Title</label>
             <input name="title" value="{{$post->title}}" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Title">
