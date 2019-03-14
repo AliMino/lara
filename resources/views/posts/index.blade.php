@@ -11,6 +11,7 @@
       <th scope="col">Description</th>
       <th scope="col">Creator Name</th>
       <th scope="col">View</th>
+      <th scope="col">View AJAX</th>
       <th scope="col">Delete</th>
       <th scope="col">Edit</th>
     </tr>
@@ -23,6 +24,7 @@
       <td>{{$post->description}}</td>
       <td>{{ isset($post->user) ? $post->user->name : 'Not Found'}}</td>
       <td><a href="/posts/{{$post->id}}" class="btn btn-dark">view</a></td>
+      <td><a href="/posts/{{$post->id}}" class="btn btn-secondary">view ajax</a></td>
       <td>
         <form id="{{$post->id}}" method="post" action="/posts/{{$post->id}}">
         {!! csrf_field() !!}

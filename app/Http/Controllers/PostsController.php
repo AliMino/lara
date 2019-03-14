@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\User;
+use App\Http\Requests\Post\StorePostRequest;
+use App\Http\Requests\Post\UpdatePostRequest;
 
 class PostsController extends Controller
 {
@@ -23,15 +25,16 @@ class PostsController extends Controller
         ]);
     }
 
-    public function store()
+    public function store(StorePostRequest $request)
     {
-        Post::create(request()->all());
+        // Post::create(request()->all());
+        Post::create($request->all());
         return redirect()->route('posts.index');
     }
 
-    public function update(Post $post)
+    public function update(Post $post, UpdatePostRequest $request)
     {
-        $post->update(request()->all());
+        $post->update($request->all());
         return redirect()->route('posts.index');
     }
 

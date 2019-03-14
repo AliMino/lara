@@ -3,6 +3,16 @@
  @section('content')
  <a href="{{route('posts.index')}}" class="btn btn-danger">Back</a>
 
+ @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
     <form action="{{route('posts.update', $post)}}" method="post">
         <!-- @csrf -->
         {{ csrf_field()}}
