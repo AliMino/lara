@@ -2,7 +2,7 @@
 
 @section('content')
 
-<a href="{{route('posts.create')}}" class="btn btn-success">Create Post</a>
+
   <table class="table">
   <thead>
     <tr>
@@ -38,5 +38,8 @@
 </table>
 <div class="d-flex justify-content-center">
   {{$posts->links()}}
+</div>
+<div class="d-flex justify-content-center">
+  <a href="{{route('posts.create')}}" class="btn btn-success">New Post</a>
 </div>
 @endsection
