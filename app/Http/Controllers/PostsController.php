@@ -14,7 +14,7 @@ class PostsController extends Controller
     {
         return view('posts.index', [
             // 'posts' => Post::all()
-            'posts' => Post::paginate(4)
+            'posts' => Post::paginate(10)
         ]);
     }
 
