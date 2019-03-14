@@ -1,18 +1,42 @@
  @extends('layouts.app')
 
  @section('content')
- <a href="{{route('posts.index')}}" class="btn btn-danger">Home</a>
 
- 
- <h1>ID: {{ $post->id }}</h1>
- <h1>Title: {{ $post->title }}</h1>
- <h1>Description: {{ $post->description }}</h1>
- <h1>Created at: {{ $post->created_at }}</h1>
- <h1>Updated at: {{ $post->updated_at }}</h1>
- <h1>Username: {{ $post->user != null ? $post->user->name : "Not found" }}</h1>
+<div class="limiter">
+<div class="wrap-table100">
+        <div class="table100 ver3 m-b-110">
+            <div class="table100-head">
+                <table>
+                    <thead>
+                        <tr class="row100 head">
+                            <th class="cell100 column5">ID</th>
+                            <th class="cell100 column5">Title</th>
+                            <th class="cell100 column2">Description</th>
+                            <th class="cell100 column1">Created At</th>
+                            <th class="cell100 column2">Post Creator Name</th>
+                            <th class="cell100 column2">Post Creator Email</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
 
- 
-    
+            <div class="table100-body js-pscroll">
+                <table>
+                    <tbody>
+                        <tr class="row100 body">
+                            <td class="cell100 column5">{{ $post->id }}</td>
+                            <td class="cell100 column5">{{ $post->title }}</td>
+                            <td class="cell100 column2">{{ $post->description }}</td>
+                            <td class="cell100 column1">{{ $post->created_at->format("l jS \\of F Y h:i:s A") }}</td>
+                            <td class="cell100 column2">{{ $post->user != null ? $post->user->name : "Not found" }}</td>
+                            <td class="cell100 column2">{{ $post->user != null ? $post->user->email : "Not found" }}</td>
+                        </tr>
 
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
  
