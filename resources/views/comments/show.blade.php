@@ -1,7 +1,7 @@
  @extends('layouts.app')
 
  @section('content')
-
+ 
 <div class="limiter">
 <div class="wrap-table100">
         <div class="table100 ver3 m-b-110">
@@ -38,26 +38,9 @@
         </div>
     </div>
 </div>
+
 <div class="text-center alert alert-danger">
 <a href="/posts/{{$post->id}}/comment/create" class="btn btn-info">Add comment</a>
 </div>
-
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Comment</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach($comments as $comment)
-        <tr>
-            <td scope="row">{{$comment->id}}</td>
-            <td>{{$comment->comment}}</td>
-        </tr>
-        @endforeach
-    </tbody>
-</table>
-
 @endsection
  

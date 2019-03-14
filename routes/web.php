@@ -26,5 +26,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/posts/{post}/edit','PostsController@edit')->name('posts.edit');
     Route::put('/posts/{post}','PostsController@update')->name('posts.update');
     Route::get('/posts/{post}','PostsController@show')->name('posts.show');
+    
+    Route::get('/posts/{post}/comment/create','CommentsController@create')->name('comments.create');
+    Route::post('/posts','CommentsController@store')->name('comments.store');
+
     Route::get('/home', 'HomeController@index')->name('home');
 });
