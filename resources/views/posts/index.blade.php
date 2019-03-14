@@ -31,9 +31,9 @@
       <td><a href="/posts/{{$post->id}}" class="btn btn-secondary">view ajax</a></td>
       <td>
         <form id="{{$post->id}}" method="post" action="/posts/{{$post->id}}">
-        {!! csrf_field() !!}
-          <input id="{{$post->id}}" type="submit" class="btn btn-danger" value="Delete" onclick="return confirm('Are you sure?')"></input>
-          <input type="hidden" name="_method" value="delete" />
+          {!! csrf_field() !!}
+            <input id="{{$post->id}}" type="submit" class="btn btn-danger" value="Delete" onclick="return confirm('Are you sure?')"></input>
+            <input type="hidden" name="_method" value="delete" />
         </form>
       </td>
       <td><a href="/posts/{{$post->id}}/edit" class="btn btn-warning">Edit</a></td>
@@ -45,6 +45,11 @@
 <div class="d-flex justify-content-center">
   {{$posts->links()}}
 </div>
+<br>
+<div class="d-flex justify-content-center">
+  <a href="{{route('posts.restore')}}" class="btn btn-info" onclick="return confirm('Are you sure?')">Restore Deleted Posts</a>
+</div>
+<br>
 <div class="d-flex justify-content-center">
   <a href="{{route('posts.create')}}" class="btn btn-success">New Post</a>
 </div>

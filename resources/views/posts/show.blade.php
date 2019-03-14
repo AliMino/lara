@@ -38,5 +38,8 @@
         </div>
     </div>
 </div>
+<div class="text-center alert alert-danger">
+        <a href="" class="btn btn-info">Add comment</a>
+</div>
 @endsection
  

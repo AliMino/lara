@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Post;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Rules\NoMoreThreePosts;
 
 class StorePostRequest extends FormRequest
 {
@@ -24,6 +25,7 @@ class StorePostRequest extends FormRequest
     public function rules()
     {
         return [
+            // 'title' => 'required|min:3|unique:posts,title',
             'title' => 'required|min:3|unique:posts,title',
             'description' => 'required|min:10',
             'user_id' => 'exists:users,id'

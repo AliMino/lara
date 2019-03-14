@@ -46,7 +46,6 @@ class PostsController extends Controller
 
     public function edit(Post $post)
     {
-        // dd($post->user->name);
         return view('posts.edit', [
             'post' => $post,
             'users' => User::all()
@@ -58,5 +57,11 @@ class PostsController extends Controller
         return view('posts.show', [
             'post' => $post
         ]);
+    }
+
+    public function restore()
+    {
+        Post::onlyTrashed()->restore();
+        return redirect()->route('posts.index');
     }
 }
