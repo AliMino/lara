@@ -11,7 +11,7 @@
             <textarea name="comment" class="form-control"></textarea>
         </div>
         <input type="hidden" name="post" value="{{$post}}"></input>
-
+        <input type="hidden" name="user" value="{{Auth::user()->id}}"></input>
 
     <button type="submit" class="btn btn-primary">Submit</button>
     </form>

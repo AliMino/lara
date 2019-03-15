@@ -47,6 +47,7 @@
         <tr>
             <th scope="col">Id</th>
             <th scope="col">Comment</th>
+            <th scope="col">User</th>
         </tr>
     </thead>
     <tbody>
@@ -54,6 +55,7 @@
         <tr>
             <td scope="row">{{$comment->id}}</td>
             <td>{{$comment->comment}}</td>
+            <td>{{ isset($comment->user) ? $comment->user->name : 'Not Found'}}</td>
         </tr>
         @endforeach
     </tbody>

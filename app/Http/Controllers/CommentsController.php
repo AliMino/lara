@@ -18,10 +18,10 @@ class CommentsController extends Controller
 
     public function store(Request $request)
     {
-        // Post::create(request()->all());
         Comment::create([
             'comment' => $request->comment,
-            'post_id' => $request->post
+            'post_id' => $request->post,
+            'user_id' => $request->user
         ]);
         return redirect()->route('posts.index');
     }

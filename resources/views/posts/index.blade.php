@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
 @if (Auth::check())
   <table class="table">
   <thead>

@@ -9,6 +9,7 @@ class Comment extends Model
     protected $fillable = [
         'post_id',
         'comment',
+        'user_id'
     ];
 
     public function post()
@@ -16,7 +17,7 @@ class Comment extends Model
         // return $this->belongsTo('App\User');
         return $this->belongsTo(Post::class);
     }
-    
+
     public function user()
     {
         // return $this->belongsTo('App\User');
