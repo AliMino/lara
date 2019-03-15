@@ -1,7 +1,6 @@
  @extends('layouts.app')
 
  @section('content')
- <a href="{{route('posts.index')}}" class="btn btn-danger">Back</a>
 
  @if ($errors->any())
     <div class="alert alert-danger">
