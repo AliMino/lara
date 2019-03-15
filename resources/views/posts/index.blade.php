@@ -1,6 +1,32 @@
 @extends('layouts.app')
 
 @section('content')
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 @if (Auth::check())
   <table class="table">
   <thead>
@@ -27,7 +53,33 @@
       <td>{{ isset($post->user) ? $post->user->name : 'Not Found'}}</td>
       <td>{{$post['created_at']->format('M d Y')}}</td>
       <td><a href="/posts/{{$post->id}}" class="btn btn-dark">view</a></td>
-      <td><a href="/posts/{{$post->id}}" class="btn btn-secondary">view ajax</a></td>
+      <!-- Modal button -->
+      <td><button type="button" data-toggle="modal" data-target="#postModal{{$post->id}}" class="btn btn-secondary">view ajax</button></td>
+      <!-- Modal -->
+      <div class="modal fade" id="postModal{{$post->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2 class="modal-title" id="exampleModalLabel">Post Details</h2>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <h4>Title: <mark>{{$post->title}}</mark></h4>
+              <h4>Description: <mark>{{$post->description}}</mark></h4>
+              <h4>Slug: <mark>{{$post->slug != '' ? $post->slug : "Not found"}}</mark></h4>
+              <h4>Username: <mark>{{ $post->user != null ? $post->user->name : "Not found" }}</mark></h4>
+              <h4>User email: <mark>{{ $post->user != null ? $post->user->email : "Not found" }}</mark></h4>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+
       <td>
         <form id="{{$post->id}}" method="post" action="/posts/{{$post->id}}">
           {!! csrf_field() !!}

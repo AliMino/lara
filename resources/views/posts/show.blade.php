@@ -3,7 +3,7 @@
  @section('content')
 
 <div class="limiter">
-<div class="wrap-table100">
+    <div class="wrap-table100">
         <div class="table100 ver3 m-b-110">
             <div class="table100-head">
                 <table>
@@ -31,7 +31,6 @@
                             <td class="cell100 column2">{{ $post->user != null ? $post->user->name : "Not found" }}</td>
                             <td class="cell100 column2">{{ $post->user != null ? $post->user->email : "Not found" }}</td>
                         </tr>
-
                     </tbody>
                 </table>
             </div>
