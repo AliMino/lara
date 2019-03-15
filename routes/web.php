@@ -26,8 +26,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('/posts/{post}','Post\UpdateController@update')->name('posts.update');
     Route::get('/posts/{post}','Post\ShowController@show')->name('posts.show');
     
-    Route::get('/posts/{post}/comment/create','CommentsController@create')->name('comments.create');
-    Route::post('/comments','CommentsController@store')->name('comments.store');
+    Route::get('/posts/{post}/comment/create','Comment\CreateController@create')->name('comments.create');
+    Route::post('/comments','Comment\StoreController@store')->name('comments.store');
 
     Route::get('/home', 'HomeController@index')->name('home');
 });
