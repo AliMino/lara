@@ -16,16 +16,15 @@ Route::get('/', function () {
 });
 Auth::routes();
 
-
 Route::group(['middleware' => ['auth']], function () {
-    Route::get('/posts', 'PostsController@index')->name('posts.index');
-    Route::get('/posts/restore', 'PostsController@restore')->name('posts.restore');
-    Route::get('/posts/create', 'PostsController@create')->name('posts.create');
-   Route::post('/posts','PostsController@store')->name('posts.store');
-    Route::delete('/posts/{post}','PostsController@destroy')->name('posts.destroy');
-    Route::get('/posts/{post}/edit','PostsController@edit')->name('posts.edit');
-    Route::put('/posts/{post}','PostsController@update')->name('posts.update');
-    Route::get('/posts/{post}','PostsController@show')->name('posts.show');
+    Route::get('/posts', 'Post\IndexController@index')->name('posts.index');
+    Route::get('/posts/restore', 'Post\RestoreController@restore')->name('posts.restore');
+    Route::get('/posts/create', 'Post\CreateController@create')->name('posts.create');
+    Route::post('/posts','Post\StoreController@store')->name('posts.store');
+    Route::delete('/posts/{post}','Post\DestroyController@destroy')->name('posts.destroy');
+    Route::get('/posts/{post}/edit','Post\EditController@edit')->name('posts.edit');
+    Route::put('/posts/{post}','Post\UpdateController@update')->name('posts.update');
+    Route::get('/posts/{post}','Post\ShowController@show')->name('posts.show');
     
     Route::get('/posts/{post}/comment/create','CommentsController@create')->name('comments.create');
     Route::post('/comments','CommentsController@store')->name('comments.store');
