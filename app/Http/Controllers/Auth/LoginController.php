@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Auth;
+use App\User;
 use Socialite;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+
 
 class LoginController extends Controller
 {
@@ -48,8 +52,16 @@ class LoginController extends Controller
      */
     public function handleProviderCallback()
     {
-        $user = Socialite::driver('github')->user();
-        dd($user);
-        // $user->token;
+        $githubUser = Socialite::driver('github')->user();
+        
+        $user = User::create([
+            'name' => $githubUser->getName(),
+            'email' => $githubUser->getEmail(), 
+        ]);
+        Auth::login($user, true);
     }
+    // public function showLoginForm()
+    // {
+    //     // dd("hi");
+    // }
 }
