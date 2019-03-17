@@ -12,22 +12,20 @@ class PostsController extends Controller
 {
     public function index()
     {
-        $posts = Post::paginate(5);
-        return PostResource::collection($posts);
+        $postsPerPage = 5;
+        return PostResource::collection(Post::paginate($postsPerPage));
     }
 
     public function show($post)
     {
-        $post = Post::findOrFail($post);
-        return new PostResource($post);
+        return new PostResource(Post::findOrFail($post));
     }
 
     public function store(StorePostRequest $request)
     {
         Post::create($request->all());
-
         return response()->json([
-            'message' => 'Post Created Successfully'
+            'message' => 'Post Created'
         ],201);
     }
 }

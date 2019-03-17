@@ -15,6 +15,8 @@ Route::get('/', function () {
     return redirect()->route('posts.index');
 });
 Auth::routes();
+Route::get('login/github', 'Auth\LoginController@redirectToProvider');
+Route::get('login/github/callback', 'Auth\LoginController@handleProviderCallback');
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/posts', 'Post\IndexController@index')->name('posts.index');
