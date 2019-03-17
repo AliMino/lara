@@ -53,12 +53,15 @@ class LoginController extends Controller
     public function handleProviderCallback()
     {
         $githubUser = Socialite::driver('github')->user();
-        
-        $user = User::create([
-            'name' => $githubUser->getName(),
-            'email' => $githubUser->getEmail(), 
-        ]);
+        $user = User::where(["name" => $githubUser->getName()])->first();
+        if(!$user) {
+            $user = User::create([
+                'name' => $githubUser->getName(),
+                'email' => $githubUser->getEmail(), 
+            ]);
+        }
         Auth::login($user, true);
+        return redirect($this->redirectTo);
     }
     // public function showLoginForm()
     // {
